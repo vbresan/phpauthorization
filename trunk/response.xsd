@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+	targetNamespace="urn:com:phpauthorization" 
+	xmlns="urn:com:phpauthorization"
+	elementFormDefault="qualified">
+
+<xs:element name="AuthorizerResponse" type="AuthorizerResponse" />
+
+<xs:complexType name="AuthorizerResponse">
+	<xs:sequence>
+		<xs:element name="Service" type="xs:string"/>
+		<xs:element name="Address" type="xs:string"/>
+		<xs:element name="Key" type="xs:string"/>
+		<xs:element name="RemainingCredit" type="xs:int"/>
+		<xs:element name="Authorized" type="xs:boolean"/>
+	</xs:sequence>
+</xs:complexType>
+
+</xs:schema>

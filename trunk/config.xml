@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<options>
+ 
+  <!-- The input directory that contains class source files to be compiled -->
+  <!-- Use comma for multiple directories -->
+  <source_dirs>class</source_dirs>
+ 
+  <!-- Whether to compile subdirs recursively: true(default)|false -->
+  <recursive>true</recursive>
+ 
+  <!-- The output directory that the compiled runtime info is stored -->
+  <!-- You need to make it writable to the user who runs your web app -->
+  <compiled_dir>compiled</compiled_dir>
+ 
+  <!-- The file to contain the compiled information: default to compiled.ezpdo -->
+  <compiled_file>compiled.ezpdo</compiled_file>
+ 
+  <!-- Whether to backup old compiled file: true(default)|false -->
+  <backup_compiled>false</backup_compiled>
+ 
+  <!-- The name of the default oid column -->
+  <default_oid_column>ID</default_oid_column>
+ 
+  <!-- The default DSN to the database you want to store your objects -->
+  <!-- This will be the default DSN for classes that do not have DSN specified -->
+  <!-- <default_dsn>mysql://username:password@localhost/databasename</default_dsn> -->
+  <!-- <default_dsn>pgsql://username:password@localhost/databasename</default_dsn> -->
+  <!-- <default_dsn>sqlite://databasename.db</default_dsn>  -->
+ 
+  <!-- Whether to enable auto-compile: true(default)|false            -->
+  <!-- Class will be auto-compiled for the first time to be persisted -->
+  <auto_compile>true</auto_compile>
+ 
+  <!-- Whether you want to enable auto-flush: true(default)|false -->
+  <!-- All 'dirty' objects are commit before your script exits-->
+  <!-- <auto_flush>true</auto_flush>  -->
+ 
+  <!-- The database abstraction library you want to use: default to adodb-->
+  <!-- Currently available options: adodb, peardb -->
+  <db_lib>adodb</db_lib>
+  <!-- <db_lib>peardb</db_lib> -->
+  <!-- <db_lib>pdo</db_lib> -->
+ 
+  <!-- Whether to write log on console: true(default)|false -->
+  <!-- Note that console log only works on command line)    -->
+  <log_console>true</log_console>
+ 
+  <!-- Log file name (string). If unspecified, no log is generated. -->
+  <!-- Note that 'relative' path is relative path to this config file   -->
+  <log_file>ezpdo.log</log_file>
+  
+</options>
