@@ -1,0 +1,32 @@
+#summary Usage examples
+
+Integrating PHP Authorizer to your web service or web page is simple as adding the following block of code:
+
+{{{
+$credit = 1;
+if (AuthorizerClient::hasCredit("MyService", "MyKey", $credit)) {
+    // visitor is authorized to use the service
+} else {
+    // visitor is not authorized to use the service
+}
+}}}
+
+*Example 1: limit the number of your website requests to 30 per IP address per day*
+
+First you need to enter default values (service name, maximum number of requests and number of days after which the counters are reset) in SQL table named `ServiceDefaults`. For this example, the following SQL statement does the right thing:
+
+{{{
+INSERT INTO database_name.ServiceDefaults
+VALUES (NULL, 'MySite', 30, 1); 
+}}}
+
+Next, you need to customize `./client/class/AuthorizerClient.class.php` file. In line 51 replace default URL with the URL containing your hostname and path to PHP Authorization web service. Keep the trailing slash and question mark.
+
+After this, run `./client/example1.php` script. If you have set up everything correctly, you should see the message _'You can use the web site!'_. If you open `ClientData` table you will notice that it looks like:
+
+|| *ID* || *service* || *address* || *key* || *usedCredit* || *maxCredit* || *expireInDays* || *timestamp* ||
+|| 1 ||	!MySite || 127.0.0.1 || default || 1 || 30 || 1 || 1245149253 ||
+
+If you re-run the script you will notice that `usedCredit` is increased by one, etc. After you have used up the limit that you have set, error message will appear.
+
+Basically, `AuthorizerClient.class.php` file and code snippet from `example1.php` is all that you need to integrate in your web site to use PHP Authorization service. Each visit to your web site from different IP address will have it's own entry in `ClientData` table and thus own request counters.
